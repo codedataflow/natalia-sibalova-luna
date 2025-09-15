@@ -1,0 +1,64 @@
+body {
+   background-color: antiquewhite;
+   color: black;
+   font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3em;
+    color: #030345bf;
+}
+
+#About .image {
+  display: block;
+  margin: 0 auto;
+}
+
+section {
+    margin: 10px;
+    padding: 5px;
+}
+
+#Experience ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+#Experience p + ul {
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#Experience p + ul:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+#Experience p {
+  font-weight: 600;
+  margin: 0.5rem 0 0.2rem;
+}
+
+#Connect{
+    text-align: center;
+}
+
+#Connect ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#Connect a {
+    color: blue;
+}
+
+#Connect a:hover {
+    color: blueviolet;
+    text-decoration: underline;
+}
