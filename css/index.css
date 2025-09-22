@@ -4,6 +4,25 @@ body {
    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+header {
+  position: sticky;
+  top: 0;
+  background-color: whitesmoke;
+  padding: 5px;
+}
+
+header nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  list-style-type: none;
+}
+
+header nav a {
+  text-decoration: none; /* removes underline */
+  font-size: 18px;
+}
+
 h1 {
     text-align: center;
     font-size: 3em;
@@ -20,6 +39,58 @@ section {
     padding: 5px;
 }
 
+#Experience {
+  margin: 20px 10px;
+  padding: 10px;
+}
+
+#Experience .job {
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#Experience .job:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+#Experience .job-header {
+  display: flex;
+  justify-content: space-between; /* pushes title left, dates right */
+  align-items: baseline;
+  margin-bottom: 0.3rem;
+}
+
+#Experience .job-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #222;
+  margin: 0;
+}
+
+#Experience .job-dates {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+#Experience .company {
+  font-style: italic;
+  margin: 0 0 0.8rem;
+  color: #444;
+}
+
+#Experience ul {
+  list-style: disc;
+  margin-left: 1.2rem;
+  padding-left: 0;
+}
+
+/*
 #Experience ul {
   list-style: none;
   padding-left: 1rem;
@@ -44,6 +115,7 @@ section {
   font-weight: 600;
   margin: 0.5rem 0 0.2rem;
 }
+*/
 
 #Connect{
     text-align: center;
@@ -52,10 +124,15 @@ section {
 #Connect ul {
     list-style-type: none;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 #Connect a {
     color: blue;
+    text-decoration: none;
+    font-size: 1.2em;
 }
 
 #Connect a:hover {
