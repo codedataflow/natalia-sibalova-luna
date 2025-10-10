@@ -94,6 +94,37 @@ section {
   padding-left: 0;
 }
 
+#Skills {
+    margin: 1.25rem 0.625rem;
+    padding: 0.625rem;
+}
+
+#Skills .job {
+    background: #fff;
+    border: 0.063rem solid #e6e6e6;
+    border-radius: 0.5rem;
+    padding: 1rem 1.25rem;
+    box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect for card lift */
+#Skills .job:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: 0 0.5rem 1.25rem rgba(0,0,0,0.08);
+}
+
+/* List inside the card */
+#Skills ul {
+    list-style: none;
+    margin-left: 1.2rem;
+    padding-left: 0;
+}
+
+#Skills li {
+    margin-bottom: 0.5rem;
+}
+
 #Connect{
     text-align: center;
 }
@@ -140,6 +171,10 @@ section {
     padding: 2rem;
     background-color: #f9f9f9;
   }
+  
+    #Skills .job {
+        padding: 1.5rem 2rem;
+  }
 
   #Connect ul {
     grid-template-columns: repeat(2, 1fr);
@@ -169,7 +204,15 @@ section {
     padding: 2rem;
     box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.1);
   }
+
   
+  #Skills .job {
+        padding: 2rem 2.5rem;
+        box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.1);
+  }
+
+
+
   #Connect ul {
     grid-template-columns: repeat(2, 1fr);
     gap: 2.5rem;
