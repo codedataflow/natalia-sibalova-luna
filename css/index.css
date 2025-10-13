@@ -150,6 +150,133 @@ section {
 }
 
 /*======================================================*/
+/* MESSAGE FORM STYLES */
+/*======================================================*/
+#Form h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+form[name="leave_messages"] {
+  max-width: 600px;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.05);
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+form[name="leave_messages"] label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #222;
+}
+
+form[name="leave_messages"] input,
+form[name="leave_messages"] textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.4rem;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.2s ease;
+}
+
+form[name="leave_messages"] input:focus,
+form[name="leave_messages"] textarea:focus {
+  border-color: darkslateblue;
+  outline: none;
+}
+
+#usersName,
+#usersEmail {
+  width: 60%;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+/* Submit Button */
+form[name="leave_messages"] button[type="submit"] {
+  background-color: darkslateblue;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  align-self: center;
+  max-width: 200px;
+}
+
+form[name="leave_messages"] button[type="submit"]:hover {
+  background-color: #4b3b8f;
+}
+
+#Messages h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#Messages ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+#Messages li {
+    background-color: #fff;
+    border: 0.063rem solid #e6e6e6;
+    border-radius: 0.5rem;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#Messages li:hover {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1.25rem rgba(0,0,0,0.08);
+}
+
+#Messages li span {
+    margin-right: 1rem;
+}
+
+#Messages li button {
+    background-color: darkslateblue;
+    color: #fff;
+    border: none;
+    border-radius: 0.4rem;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 0.5rem;
+    transition: background-color 0.2s ease;
+}
+
+#Messages li button:hover {
+    background-color: #4b3b8f;
+}
+
+#Messages li button.remove-btn {
+    background-color: crimson;
+}
+
+#Messages li button.remove-btn:hover {
+    background-color: darkred;
+}
+
+/*======================================================*/
 /*TABLET*/
 /*======================================================*/
 @media (min-width: 768px) {
@@ -182,6 +309,33 @@ section {
   }
 }
 
+form[name="leave_messages"] {
+        max-width: 650px;
+        padding: 2.5rem;
+    }
+
+  #usersName,
+  #usersEmail {
+        width: 50%;
+        font-size: 1rem;
+        padding: 0.75rem;
+    }
+
+  #usersMessage {
+        font-size: 1.05rem;
+        padding: 1rem;
+    }
+
+  form[name="leave_messages"] button[type="submit"] {
+        font-size: 1.05rem;
+        padding: 1rem;
+    }
+
+  #Messages li button {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.95rem;
+    }
+
 /*======================================================*/
 /*DESKTOP*/
 /*======================================================*/
@@ -205,16 +359,35 @@ section {
     box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.1);
   }
 
-  
   #Skills .job {
         padding: 2rem 2.5rem;
         box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.1);
   }
-
-
 
   #Connect ul {
     grid-template-columns: repeat(2, 1fr);
     gap: 2.5rem;
   }
 }
+
+  #usersName,
+  #usersEmail {
+        width: 45%;
+        font-size: 1.05rem;
+        padding: 0.75rem;
+    }
+
+  #usersMessage {
+        font-size: 1.1rem;
+        padding: 1rem;
+    }
+
+  form[name="leave_messages"] button[type="submit"] {
+        font-size: 1.1rem;
+        padding: 1rem 1.25rem;
+    }
+
+  #Messages li button {
+        padding: 0.6rem 1rem;
+        font-size: 1rem;
+    }
