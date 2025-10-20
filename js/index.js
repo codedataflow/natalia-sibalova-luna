@@ -62,7 +62,7 @@ function toggleMessagesSection() {
 toggleMessagesSection();
 
 //Select the leave_message form by name
-const messageForm = document.querySelector("form[name=leave_messages]");
+const messageForm = document.querySelector("form[name=leave_message]");
 
 // Add an event listener to handlle "submit"
 messageForm.addEventListener("submit", function(event) {
@@ -70,14 +70,14 @@ messageForm.addEventListener("submit", function(event) {
   event.preventDefault();
 
   //Retrive form field values
-  const userName = event.target.usersName.value;
-  const userEmail = event.target.usersEmail.value;
-  const userMessage = event.target.usersMessage.value;
+  const usersName = event.target.usersName.value;
+  const usersEmail = event.target.usersEmail.value;
+  var usersMessage = event.target.usersMessage.value;
 
   // Log values to log
-  console.log("Name: ", userName);
-  console.log("Email: ", userEmail);
-  console.log("Message: ", userMessage);
+  console.log("Name: ", usersName);
+  console.log("Email: ", usersEmail);
+  console.log("Message: ", usersMessage);
 
   // Select the #Messages section
   const messageSection = document.getElementById("Messages");
@@ -88,7 +88,7 @@ messageForm.addEventListener("submit", function(event) {
   //Create a new list item
   const newMessage = document.createElement("li");
   // Set the inner HTML
-  newMessage.innerHTML = `<a href="mailto:${userEmail}">${userName}</a>: <span>${userMessage}</span>`
+  newMessage.innerHTML = `<a href="mailto:${usersEmail}">${usersName}</a>: <span>${usersMessage}</span>`
 
   // Create an edit button
   const editButton = document.createElement("button");
@@ -96,26 +96,34 @@ messageForm.addEventListener("submit", function(event) {
   editButton.className = "edit-btn";
   editButton.type = "button";
 
-  // Add click event listener to edit the message
-  editButton.addEventListener("click", function() {
-    // Find the message portion
-    const messageSpan = newMessage.querySelector("span");
-    // Promt the user for a new message
-    const newText = prompt("Edit your message: ", messageSpan.innerText);
-    // Update the message
-    if (newText !== null) {
-        messageSpan.innerText = newText;
-    }
-  });
-
-  // Append the edit button to the new message
-  newMessage.appendChild(editButton);
-
   // Create a remove button
   const removeButton = document.createElement("button");
   removeButton.innerText = "remove";
   removeButton.className = "remove-btn";
   removeButton.type ="button";
+  
+  // Create a save button
+  const saveButton = document.createElement("button");
+  saveButton.innerText = "save";
+  saveButton.className = "save-btn";
+  saveButton.type = "button";
+
+  // Add click event listener to edit the message
+  editButton.addEventListener("click", function() {
+    newMessage.innerHTML = `<a href="mailto:${usersEmail}">${usersName}</a>: <span><textarea id="usersMessageEdit" name="usersMessage" required>${usersMessage}</textarea></span>`
+    newMessage.appendChild(saveButton);
+  });
+
+saveButton.addEventListener("click", function() {
+    usersMessage = document.getElementById("usersMessageEdit").value;
+    console.log(usersMessage);
+    newMessage.innerHTML = `<a href="mailto:${usersEmail}">${usersName}</a>: <span>${usersMessage}</span>`
+    newMessage.appendChild(editButton);
+    newMessage.appendChild(removeButton);
+  });
+
+  // Append the edit button to the new message
+  newMessage.appendChild(editButton);
 
   // Add click event listener to remove the message
   removeButton.addEventListener("click", function() {
@@ -141,3 +149,52 @@ messageForm.addEventListener("submit", function(event) {
    // Clear form after submission
    messageForm.reset();
   });
+
+  // ------------- Project Section -----------
+  // Fetch my GitHub repositories
+  fetch("https://api.github.com/users/codedataflow/repos")
+    .then((response) => {
+       //Error fetch data
+       if (!response.ok) {
+       //Throw an error 
+        throw new Error("Failed to fetch data from GitHub. Please try again later");
+       }
+      // Retunr the response JSON data
+      return response.json(); 
+    })
+    .then((repositories) => {
+      //repositories = JSON.parse(this.repositories);
+      console.log("Repositories: ", repositories)
+      // Get the Project section
+      const projectSection = document.getElementById("Projects");
+      // Select the list within the Project section
+      const projectList = projectSection.querySelector("ul");
+      // Clear the content just in case
+      projectList.innerHTML = "";
+
+      // Iterate through all public repositories
+      for (let i = 0; i < repositories.length; i++) {
+        // Create a new list item
+        const project = document.createElement("li");
+        // Create a link for the list item
+        const link = document.createElement("a");
+        // Set the link url
+        link.href = repositories[i].html_url;
+        // Set the text for the link
+        link.textContent = repositories[i].name;
+        // Append the link to the list item
+        project.appendChild(link);
+        // Append the list item to the list of projects
+        projectList.appendChild(project);
+      }
+    })
+    .catch((error) => {
+    //Log the error
+    console.error("Error fetching repositories:", error);
+    // Get teh project section
+    const projectSection = document.getElementById("Projects");
+    // Add an error message on th ui
+    const errorMessage = document.createElement("p");
+    errorMessage.innerHTML = 'Unable to load projects. Please try again later.';
+    projectSection.appendChild(errorMessage);
+    })
